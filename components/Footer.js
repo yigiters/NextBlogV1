@@ -14,12 +14,12 @@ const Footer = () => {
                         <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
                             <li>
                                 <Link href={"/terms"}>
-                                <a className='hover:text-orange-400 font-bold duration-200'>Terms of Use</a>
+                                <a className='hover:text-orange-400 font-bold duration-200'>Kullanım Şartları</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/privacy"}>
-                                <a className='hover:text-orange-400 font-bold duration-200'>Privacy</a>
+                                <a className='hover:text-orange-400 font-bold duration-200'>Gizlilik</a>
                                 </Link>
                             </li>
                         </ul>
