@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
 
@@ -12,10 +13,14 @@ const Footer = () => {
                         </div>
                         <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
                             <li>
-                                <a rel="noopener noreferrer" className='hover:text-orange-400 font-bold duration-200' href="/terms">Terms of Use</a>
+                                <Link href={"/terms"}>
+                                <a className='hover:text-orange-400 font-bold duration-200'>Terms of Use</a>
+                                </Link>
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" className='hover:text-orange-400 font-bold duration-200' href="/privacy">Privacy</a>
+                                <Link href={"/privacy"}>
+                                <a className='hover:text-orange-400 font-bold duration-200'>Privacy</a>
+                                </Link>
                             </li>
                         </ul>
                     </div>
