@@ -1,13 +1,19 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
-export default function Categories({ categories }) {
+export default function Categories({ categories, hostname, desc }) {
     const router = useRouter()
 
     return (
         <div className="bg-gray-200">
+            <Head>
+                <title>Kategoriler | {hostname[0].value}</title>
+                <meta name="description" content={desc[0].value} />
+                <link rel="icon" href="icon.svg" />
+            </Head>
             <Navbar></Navbar>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 min-h-screen">
 
@@ -36,11 +42,17 @@ export default function Categories({ categories }) {
 
 export async function getServerSideProps() {
     const res = await fetch(`${process.env.API_HOST}/api/categories`)
+    const res1 = await fetch(`${process.env.API_HOST}/api/meta?id=7`)
+    const res2 = await fetch(`${process.env.API_HOST}/api/meta?id=8`)
     const categories = await res.json()
+    const hostname = await res1.json()
+    const desc = await res2.json()
 
     return {
         props: {
-            categories
+            categories,
+            hostname,
+            desc
         }
     }
 }

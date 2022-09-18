@@ -1,13 +1,19 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
-export default function Category({ data }) {
+export default function Category({ data, category_name, desc }) {
     const router = useRouter()
     return (
         <div className='bg-gray-200'>
             <Navbar></Navbar>
+            <Head>
+                <title>Kategoriler | {category_name[0].name} Kategorisi </title>
+                <meta name="description" content={desc[0].value} />
+                <link rel="icon" href="/icon.svg" />
+            </Head>
             <section className='mx-12 my-12 flex place-content-center'>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
 
@@ -33,10 +39,16 @@ export default function Category({ data }) {
 
 export async function getServerSideProps(context) {
     const res = await fetch(`${process.env.API_HOST}/api/category?id=${context.params.id}`)
+    const res1 = await fetch(`${process.env.API_HOST}/api/category/name?id=${context.params.id}`)
+    const res2 = await fetch(`${process.env.API_HOST}/api/meta?id=8`)
     const data = await res.json()
+    const category_name = await res1.json()
+    const desc = await res2.json()
     return {
         props: {
-            data
+            data,
+            category_name,
+            desc
         }
     }
 }

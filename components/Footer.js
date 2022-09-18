@@ -36,6 +36,12 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
+                <hr className='my-6' />
+                <div className='flex justify-center'>
+                    <Link href={"https://yigitersalman.com.tr"} target={'_blank'}>
+                        <a><img src='https://yigitersalman.com.tr/logo/YSseffaf.png' className='w-28' /></a>
+                    </Link>
+                </div>
             </footer>
         </div>
     )

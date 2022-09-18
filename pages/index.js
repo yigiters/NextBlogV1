@@ -1,13 +1,19 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useRouter } from 'next/router'
+import Head from "next/head";
 
-export default function Home({ posts, page, highlight, total }) {
+export default function Home({ posts, page, highlight, total, hostname, desc }) {
     const router = useRouter()
 
     const total_page = Math.ceil(total.length / 3)
     return (
         <div className="bg-gray-200">
+            <Head>
+                <title>Anasayfa | {hostname[0].value}</title>
+                <meta name="description" content={desc[0].value} />
+                <link rel="icon" href="icon.svg" />
+            </Head>
             <Navbar></Navbar>
 
             <section className="dark:bg-gray-800 dark:text-gray-100">
@@ -16,7 +22,9 @@ export default function Home({ posts, page, highlight, total }) {
                         <img src={highlight[0].image} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
                         <div className="p-6 space-y-2 lg:col-span-5">
                             <h3 className="text-2xl font-semibold sm:text-4xl">{highlight[0].title}</h3>
-                            <span className="text-xs dark:text-gray-400">{highlight[0].writer}</span>
+                            <span className="text-xs dark:text-gray-400 mx-2">{highlight[0].writer}</span>
+                            <span className="text-xs dark:text-gray-400">{highlight[0].createdAt.replace(/T/, ' ').replace(/\..+/, '')}</span>
+                            
                             <div dangerouslySetInnerHTML={{ __html: highlight[0].subtitle }}></div>
                         </div>
                     </a>
@@ -26,7 +34,8 @@ export default function Home({ posts, page, highlight, total }) {
                                 <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={post.image} />
                                 <div className="p-6 space-y-2">
                                     <h3 className="text-2xl font-semibold">{post.title}</h3>
-                                    <span className="text-xs dark:text-gray-400">{post.writer}</span>
+                                    <span className="text-xs dark:text-gray-400 mx-2">{post.writer}</span>
+                                    <span className="text-xs dark:text-gray-400">{post.createdAt.replace(/T/, ' ').replace(/\..+/, '')}</span>
                                     <div dangerouslySetInnerHTML={{ __html: post.subtitle }}></div>
                                 </div>
                             </a>
@@ -67,16 +76,21 @@ export async function getServerSideProps({ query: { page = 1 } }) {
     const res = await fetch(`${process.env.API_HOST}/api/posts?_start=${start}&_limit=3`)
     const res1 = await fetch(`${process.env.API_HOST}/api/highlight`)
     const res2 = await fetch(`${process.env.API_HOST}/api/posts`)
+    const res3 = await fetch(`${process.env.API_HOST}/api/meta?id=7`)
+    const res4 = await fetch(`${process.env.API_HOST}/api/meta?id=8`)
     const posts = await res.json()
     const highlight = await res1.json()
     const total = await res2.json()
-
+    const hostname = await res3.json()
+    const desc = await res4.json()
     return {
         props: {
             posts,
             page: +page,
             highlight,
-            total
+            total,
+            hostname,
+            desc
         }
     }
 }

@@ -1,10 +1,16 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
-export default function Contact({ mail, address, phone }) {
+export default function Contact({ mail, address, phone, hostname, desc }) {
     return (
         <div className='bg-gray-200'>
             <Navbar></Navbar>
+            <Head>
+                <title>Bize Ulaşın | {hostname[0].value}</title>
+                <meta name="description" content={desc[0].value} />
+                <link rel="icon" href="icon.svg" />
+            </Head>
             <section className="px-12 py-12 min-h-screen">
                 <div className="grid max-w-6xl grid-cols-1 px-6 py-12 mx-auto lg:px-8 md:grid-cols-2 md:divide-x rounded-lg text-white bg-gray-900">
                     <div className="py-6 md:py-0 md:px-6">
@@ -57,15 +63,21 @@ export async function getServerSideProps() {
     const res = await fetch(`${process.env.API_HOST}/api/meta?id=4`)
     const res1 = await fetch(`${process.env.API_HOST}/api/meta?id=5`)
     const res2 = await fetch(`${process.env.API_HOST}/api/meta?id=6`)
+    const res3 = await fetch(`${process.env.API_HOST}/api/meta?id=7`)
+    const res4 = await fetch(`${process.env.API_HOST}/api/meta?id=8`)
     const mail = await res.json()
     const address = await res1.json()
     const phone = await res2.json()
+    const hostname = await res3.json()
+    const desc = await res4.json()
 
     return {
         props: {
             mail,
             address,
-            phone
+            phone,
+            hostname,
+            desc
         }
     }
 }
