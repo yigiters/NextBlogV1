@@ -7,6 +7,7 @@ const navigation = [
   { name: 'Anasayfa', href: '/' },
   { name: 'Kategoriler', href: '/categories' },
   { name: 'Hakkımızda', href: '/about' },
+  { name: 'Hesaplama', href: '/tools/carb'},
   { name: 'İletişim', href: '/contact' },
 ]
 
