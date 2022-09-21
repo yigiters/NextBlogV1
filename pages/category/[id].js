@@ -14,7 +14,7 @@ export default function Category({ data, category_name, desc }) {
                 <meta name="description" content={desc[0].value} />
                 <link rel="icon" href="/icon.svg" />
             </Head>
-            <section className='mx-12 my-12 flex place-content-center'>
+            <section className='mx-1 my-12 flex place-content-center'>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
 
                     {data.map((post) => (

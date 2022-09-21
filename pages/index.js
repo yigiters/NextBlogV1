@@ -2,8 +2,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useRouter } from 'next/router'
 import Head from "next/head";
-import Image from "next/image";
-import { lazy } from "react";
 
 export default function Home({ posts, page, highlight, total, hostname, desc }) {
     const router = useRouter()
@@ -17,7 +15,7 @@ export default function Home({ posts, page, highlight, total, hostname, desc }) 
                 <link rel="icon" href="icon.svg" />
             </Head>
             <Navbar></Navbar>
-
+            
             <section className="dark:bg-gray-800 dark:text-gray-100">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                     <a rel="noopener noreferrer" href={`posts/${highlight[0].link}`} className="hidden md:block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-gray-900 text-gray-300">

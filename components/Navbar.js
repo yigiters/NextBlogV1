@@ -2,6 +2,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const navigation = [
   { name: 'Anasayfa', href: '/' },
@@ -64,6 +65,10 @@ export default function Example() {
                   </div>
                 </div>
               </div>
+              <form method='POST' action='/api/search' className='hidden md:flex md:justify-end h-10'>
+              <input type={"text"} name="search" className="rounded" required></input>
+              <button type='submit'><img src="https://img.icons8.com/color/48/000000/search--v1.png" className='ml-2'/></button>
+              </form>
             </div>
           </div>
 

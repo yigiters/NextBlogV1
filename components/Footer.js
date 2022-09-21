@@ -9,17 +9,17 @@ const Footer = () => {
                 <div className="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
                     <div className="flex flex-row pr-3 space-x-4 sm:space-x-8">
                         <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full dark:bg-purple-400">
-                        <img src="https://img.icons8.com/office/80/000000/diabetes.png"/>
+                            <img src="https://img.icons8.com/office/80/000000/diabetes.png" />
                         </div>
                         <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
                             <li>
                                 <Link href={"/terms"}>
-                                <a className='hover:text-orange-400 font-bold duration-200'>Kullanım Şartları</a>
+                                    <a className='hover:text-orange-400 font-bold duration-200'>Kullanım Şartları</a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href={"/privacy"}>
-                                <a className='hover:text-orange-400 font-bold duration-200'>Gizlilik</a>
+                                    <a className='hover:text-orange-400 font-bold duration-200'>Gizlilik</a>
                                 </Link>
                             </li>
                         </ul>
@@ -35,6 +35,12 @@ const Footer = () => {
                             <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" />
                         </li>
                     </ul> */}
+                    <div className='flex md:hidden justify-center'>
+                        <form method='POST' action='/api/search' className='flex md:justify-end h-10'>
+                            <input type={"text"} name="search" className="rounded w-64 text-black" required></input>
+                            <button type='submit'><img src="https://img.icons8.com/color/48/000000/search--v1.png" className='ml-2' /></button>
+                        </form>
+                    </div>
                 </div>
                 <hr className='my-6' />
                 <div className='flex justify-center'>
