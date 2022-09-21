@@ -15,7 +15,7 @@ export default function Categories({ categories, hostname, desc }) {
                 <link rel="icon" href="icon.svg" />
             </Head>
             <Navbar></Navbar>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 min-h-screen">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 min-h-screen mx-6 my-12">
 
                 {categories.map((category) => (
                     <div key={category.id} className="dark:bg-gray-800 dark:text-gray-100 px-6">

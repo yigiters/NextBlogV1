@@ -24,7 +24,7 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <ul className="hidden md:flex flex-wrap pl-3 space-x-4 sm:space-x-8">
+                    {/* <ul className="hidden md:flex flex-wrap pl-3 space-x-4 sm:space-x-8">
                         <li>
                             <img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" />
                         </li>
@@ -34,7 +34,7 @@ const Footer = () => {
                         <li>
                             <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" />
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
                 <hr className='my-6' />
                 <div className='flex justify-center'>
