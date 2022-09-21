@@ -2,6 +2,8 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useRouter } from 'next/router'
 import Head from "next/head";
+import Image from "next/image";
+import { lazy } from "react";
 
 export default function Home({ posts, page, highlight, total, hostname, desc }) {
     const router = useRouter()
@@ -18,7 +20,7 @@ export default function Home({ posts, page, highlight, total, hostname, desc }) 
 
             <section className="dark:bg-gray-800 dark:text-gray-100">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-                    <a rel="noopener noreferrer" href={`posts/${highlight[0].link}`} className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-gray-900 text-gray-300">
+                    <a rel="noopener noreferrer" href={`posts/${highlight[0].link}`} className="hidden md:block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 bg-gray-900 text-gray-300">
                         <img src={highlight[0].image} alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
                         <div className="p-6 space-y-2 lg:col-span-5">
                             <h3 className="text-2xl font-semibold sm:text-4xl">{highlight[0].title}</h3>
@@ -31,7 +33,7 @@ export default function Home({ posts, page, highlight, total, hostname, desc }) 
                     <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" id="posts">
                         {posts.map((post) => (
                             <a key={post.id} rel="noopener noreferrer" href={`/posts/${post.link}`} className="w-full mx-auto group bg-gray-900 text-gray-300">
-                                <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={post.image} />
+                                <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={post.image} loading={"lazy"} />
                                 <div className="p-6 space-y-2">
                                     <h3 className="text-2xl font-semibold">{post.title}</h3>
                                     <span className="text-xs dark:text-gray-400 mx-2">{post.writer}</span>
